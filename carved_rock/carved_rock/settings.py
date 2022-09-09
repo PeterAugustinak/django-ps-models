@@ -56,7 +56,7 @@ ROOT_URLCONF = 'carved_rock.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -134,3 +134,6 @@ LOGGING = {
     "loggers": {"django.db.backends": {"level": "DEBUG"}},
     "root": {"handlers": ["console"]},
 }
+
+# Crispy
+CRISPY_TEMPLATE_PACK = "bootstrap3"

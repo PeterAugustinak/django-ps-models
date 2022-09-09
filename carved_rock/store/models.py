@@ -22,7 +22,9 @@ class Product(models.Model):
 class ProductImage(models.Model):
     image = models.ImageField()
     # quotes in 'Product' serves in case that Product class is not defined yet
-    product = models.ForeignKey('Product', on_delete=models.CASCADE)
+    product = models.ForeignKey(
+        'Product', on_delete=models.CASCADE, related_name="images"
+    )
 
     def __str__(self):
         return f"The image for product {self.product.name}"
@@ -30,7 +32,7 @@ class ProductImage(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=30)
-    product = models.ManyToManyField('Product')
+    products = models.ManyToManyField('Product', related_name="categories")
 
     def __str__(self):
         return f"Category {self.name}"
