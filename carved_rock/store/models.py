@@ -21,7 +21,7 @@ class Product(models.Model):
         help_text="Please add unique value",
         default="a"
     )
-    # slug = models.SlugField()
+    slug = models.SlugField()
     # now Product can be used with .objects and with .stock (where only product
     # that are in stock will be
     objects = ProductInStockQuerySet.as_manager()
@@ -50,6 +50,7 @@ class Product(models.Model):
     def __str__(self):
         return f"product: {self.name}: {self.price} EUR, left: " \
                f"{self.stock_count}"
+
 
 class OrderedProducts(Product):
     class Meta:
